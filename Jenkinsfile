@@ -27,6 +27,9 @@ pipeline {
                     env.BRANCH_NAME == "main" || env.GIT_BRANCH =='origin/main'
                 }
             }
+            agent {
+                docker { image 'python:3' }
+            }
             
             
             steps {
