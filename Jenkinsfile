@@ -27,11 +27,7 @@ pipeline {
                     env.BRANCH_NAME == "main" || env.GIT_BRANCH =='origin/main'
                 }
             }
-            agent {
-                docker { image 'python:3' }
-            }
-            
-            
+                        
             steps {
                 echo "Hello World"
                 echo "version ${NEW_VERSION}"
