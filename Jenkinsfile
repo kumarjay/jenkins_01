@@ -44,7 +44,7 @@ pipeline {
                 script{
                 gv.defBuild()
                     
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
+                sh 'docker run exec -p 5000:5000 abc/xyz4'
                 //This stash step saves the Python source code and compiled byte code files from the sources
                 //workspace directory for use in later stages.
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
