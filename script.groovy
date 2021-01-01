@@ -1,4 +1,4 @@
-def function(){
+def defFunc(){
   echo "This is groovey"
 }
 
