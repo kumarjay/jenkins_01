@@ -28,6 +28,7 @@ pipeline {
                     //Docker image and runs this image as a separate container. The Python container becomes
                     //the agent that Jenkins uses to run the Build stage of your Pipeline project.
                     image 'abc/xyz4'
+                    image "docker run exec -p 5000:5000 abc/xyz4"
                 }
             }
             when{
@@ -44,7 +45,7 @@ pipeline {
                 script{
                 gv.defBuild()
                     
-                sh 'docker run exec -p 5000:5000 abc/xyz4'
+                //sh 'docker run exec -p 5000:5000 abc/xyz4'
                 //This stash step saves the Python source code and compiled byte code files from the sources
                 //workspace directory for use in later stages.
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
