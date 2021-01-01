@@ -4,6 +4,11 @@ pipeline {
     agent any //No global agent..every stage have their own agent
     stages {
         stage('Build') {
+            when{
+                expression{
+                    BRANCH_NAME == "main"
+                }
+            }
             
             
             steps {
