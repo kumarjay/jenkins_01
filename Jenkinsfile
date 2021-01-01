@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             when{
                 expression{
-                    env.BRANCH_NAME == "main" || env.BRANCH_NAME =='master'
+                    env.BRANCH_NAME == "main" || env.GIT_BRANCH =='main'
                 }
             }
             
@@ -26,7 +26,7 @@ pipeline {
     }
     post{
         always{
-        echo "Always print message"
-        echo "current branch ${env.BRANCH_NAME}"
+            echo "Always print message ${env.GIT_BRANCH}"
+            echo "current branch ${env.BRANCH_NAME}"
         }}
 }
