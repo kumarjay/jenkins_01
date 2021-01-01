@@ -22,6 +22,14 @@ pipeline {
             }
         }
         stage('Build') {
+            agent{
+                docker {
+                    //This image parameter (of the agent section’s docker parameter) downloads the python:2-alpine
+                    //Docker image and runs this image as a separate container. The Python container becomes
+                    //the agent that Jenkins uses to run the Build stage of your Pipeline project.
+                    image 'abc/xyz4'
+                }
+            }
             when{
                 expression{
                     env.BRANCH_NAME == "main" || env.GIT_BRANCH =='origin/main'
