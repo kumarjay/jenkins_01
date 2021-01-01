@@ -50,7 +50,7 @@ pipeline {
             steps{
                 echo "testing the application"
                 script{
-                gv.buildApp()
+                gv.defFunc()
                 }
             }
         }
