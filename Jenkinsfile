@@ -3,7 +3,7 @@ pipeline {
 //execution and that each stage directive must specify its own agent section.
     agent any //No global agent..every stage have their own agent
     environment{
-        NEW_VERSION= '1.3.0
+        NEW_VERSION= '1.3.0'
     }
     parameters{
         string(name: "VERSION", defaultValue: "", description: "this is parameter")
