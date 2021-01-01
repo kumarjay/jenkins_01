@@ -2,6 +2,14 @@ pipeline {
 //None parameter in the agent section means that no global agent will be allocated for the entire Pipeline’s
 //execution and that each stage directive must specify its own agent section.
     agent any //No global agent..every stage have their own agent
+    environment{
+        NEW_VERSION= '1.3.0
+    }
+    parameters{
+        string(name: "VERSION", defaultValue: "", description: "this is parameter")
+        choice(name: "VERSION1", choices: ['1,1', '1.2', '1.3'], description: "this is choice")
+        booleanParam(name: "executeText", defaultValue: true, description: "this is boolean")
+    }
     stages {
         stage('Build') {
             when{
@@ -13,6 +21,7 @@ pipeline {
             
             steps {
                 echo "Hello World"
+                echo "version ${NEW_VERSION}"
                 //This sh step runs the Python command to compile your application and
                 //its calc library into byte code files, which are placed into the sources workspace directory
                 // sh "python -m py_compile sources/add2vals.py sources/calc.py"
@@ -21,9 +30,21 @@ pipeline {
                 //stash(name: "compiled-results", includes: "sources/*.py*")
             }
         }
-        
+        stage('test'){
+            when{
+                expression{
+                    params.executeText
+                }
+            }
+            steps{
+                echo "testing the application"
+            }
+        }
         
     }
+    
+    
+        
     post{
         always{
             echo "Always print message ${env.GIT_BRANCH}"
