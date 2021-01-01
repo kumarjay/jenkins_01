@@ -27,6 +27,6 @@ pipeline {
     post{
         always{
         echo "Always print message"
-            sh "current branch ${env.BRANCH_NAME}"
+        echo "current branch ${env.BRANCH_NAME}"
         }}
 }
