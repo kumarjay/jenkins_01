@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
 //None parameter in the agent section means that no global agent will be allocated for the entire Pipeline’s
 //execution and that each stage directive must specify its own agent section.
@@ -10,6 +12,14 @@ pipeline {
         choice(name: "VERSION1", choices: ['1,1', '1.2', '1.3'], description: "this is choice")
         booleanParam(name: "executeText", defaultValue: true, description: "this is boolean")
     }
+    stages{
+        stage('init'){
+            steps{
+                script{
+                    gv= load "scipt.groovy"
+                }
+            }
+        }}
     stages {
         stage('Build') {
             when{
@@ -39,6 +49,9 @@ pipeline {
             }
             steps{
                 echo "testing the application"
+                script{
+                gv.buildApp()
+                }
             }
         }
         
