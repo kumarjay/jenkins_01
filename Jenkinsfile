@@ -12,15 +12,15 @@ pipeline {
         choice(name: "VERSION1", choices: ['1,1', '1.2', '1.3'], description: "this is choice")
         booleanParam(name: "executeText", defaultValue: true, description: "this is boolean")
     }
-    stages{
+    
+    stages {
         stage('init'){
             steps{
                 script{
                     gv= load "scipt.groovy"
                 }
             }
-        }}
-    stages {
+        }
         stage('Build') {
             when{
                 expression{
