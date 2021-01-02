@@ -38,7 +38,7 @@ pipeline {
             }
                         
             steps {
-                echo "Hello World.....|||"
+                echo "Hello World.....||| develope"
                 echo "version ${NEW_VERSION}"
                 echo "parameter is ${VERSION}"
                 
